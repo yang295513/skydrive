@@ -1,0 +1,18 @@
+spring:
+  #注意下面的username和password的写法，这两个是大坑
+  datasource:
+    url: jdbc:mysql://localhost:3306/dirver
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
