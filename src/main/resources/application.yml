@@ -4,5 +4,7 @@ logging:
 spring:
   profiles:
     active: dev
+  resources:
+    static-locations: classpath:/static/
 mybatis:
   mapper-locations: classpath:mapping/*.xml
