@@ -17,7 +17,7 @@ public class LoginController {
     LoginService service;
 
     @RequestMapping(value = "/singin",method = RequestMethod.POST)
-    public String login(String accound,String password){
+    public String login(String accound, String password){
         JSONObject jsonObject=new JSONObject();
         System.out.println(accound+password);
         List<User> list=service.login(accound,password);
@@ -28,6 +28,7 @@ public class LoginController {
         }else{
             jsonObject.put("code","200");
             jsonObject.put("msg","登陆成功");
+            jsonObject.put("user",list);
         }
         return jsonObject.toJSONString();
     }

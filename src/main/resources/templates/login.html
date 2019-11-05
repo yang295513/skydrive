@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -16,13 +16,12 @@
 	        <input type="text" id="inputAccound" name="account" class="form-control" placeholder="address" required autofocus>
 	        <label for="inputPassword" name="password" class="sr-only">Password</label>
 	        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-			<input type="text" id="yqm" class="form-control" placeholder="邀请码" required>
 	        <div class="checkbox mb-3">
 	            <label>
 	                <input type="checkbox" value="remember-me"> 记住我
 	            </label>
 	        </div>
-	        <button id="submit" name="submit" class="btn btn-lg btn-primary btn-block" type="button">注册</button>
+	        <button id="submit" name="submit" class="btn btn-lg btn-primary btn-block" type="button">登录</button>
 	        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 	    </form>
 	</div>
@@ -32,10 +31,9 @@
 			$('#submit').click(function(){
 				var account=$('#inputAccound').val();
 				var password=$('#inputPassword').val();
-				var yqm=$('#yqm').val();
 				$.post({
-					url:"/singup",
-					data:{"accound":account,"password":password,"yqm":yqm},
+					url:"/singin",
+					data:{"accound":account,"password":password},
 					dataType:"json",
 					success:function(result){
 						var code=result['code'];
@@ -48,8 +46,7 @@
 						console.log(result);
 					},
 					error:function(result){
-						var msg=result['msg'].val();
-						$("#wang").show().html(msg);
+						$("#wang").show().html("账号或者密码出现错误");
 						console.log(result+"shibai");
 					}
 				});

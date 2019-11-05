@@ -1,0 +1,15 @@
+logging:
+  file:
+    path: logger
+spring:
+  profiles:
+    active: dev
+  resources:
+    static-locations: classpath:/static/
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
