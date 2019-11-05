@@ -11,6 +11,7 @@
 <body>
 	<div class="text-center">
 	        <h1 class="h3 mb-3 font-weight-normal">欢迎使用304网盘系统</h1>
+			<div id="wang" class="alert alert-danger" role="alert" hidden="hidden">...</div>
 	        <label for="inputEmail" class="sr-only">address</label>
 	        <input type="text" id="inputAccound" name="account" class="form-control" placeholder="address" required autofocus>
 	        <label for="inputPassword" name="password" class="sr-only">Password</label>
@@ -32,13 +33,16 @@
 				var password=$('#inputPassword').val();
 				$.ajax({
 					type:'POST',
-					url:"",
+					url:"https://www.baidu.com",
 					data:{"account":account,"password":password},
+					dataType:"json",
 					success:function(result){
+						console.log("成功");
 						console.log(result);
 					},
 					error:function(result){
-						console.log(result);
+						$("#wang").show().html("账号或者密码出现错误");
+						console.log(result+"shibai");
 					}
 				});
 			})
